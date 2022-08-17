@@ -56,11 +56,17 @@ token de autenticação
 ```
 {
     "resultado": "usuário logado",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE2NjA3Mzg0NjAsImV4cCI6MTY2MDczOTA2MH0.8Uz0mKtYm19jGJYk510bQaRg302yksuzafBBJgOUj54"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ94"
 }
 ```
 ##### 401
-erro de credenciais
+erro de credenciais:
+```
+{
+    "resultado": "usuário não encontrado"
+}
+```
+ou
 
 ```
 {
