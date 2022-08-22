@@ -12,6 +12,7 @@ Authorization: onnNJXcE7C6JgSMbP7msy5gB7
 
 #### Parâmetros
 numberId: número gerado na criação do título
+
 cliente: documento do pagador (cnpj ou cpf)
 ```
 {
