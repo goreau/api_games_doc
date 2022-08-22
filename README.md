@@ -2,7 +2,7 @@
 Duepay
 ## Endpoint
 
-### POST /publico/cancela_boleto
+### POST https://api.duebank.com.br/publico/cancela_boleto
 Cancela o título informado
 #### Autorizaçao
 no header da requisição, informar o token de autenticação
