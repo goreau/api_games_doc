@@ -1,75 +1,46 @@
-# Documentação da Api de Games
-Curso de NodeJs
-## Endpoints
-### GET /games
-Listagem de todos os jogos cadastrados na base
-#### Parâmetros
-Nenhum parâmetro requerido
-#### Respostas
-##### 200
-Lista de games cadastrados
-```
-[
-    {
-        "id": 25,
-        "title": "Um jogo",
-        "year": 2019,
-        "price": 60
-    },
-    {
-        "id": 26,
-        "title": "Outro jogo",
-        "year": 2018,
-        "price": 50
-    },
-    {
-        "id": 27,
-        "title": "Mais um jogo",
-        "year": 2021,
-        "price": 80
-    }
-]
-```
-##### 401
-Usuário não conectado ao sistema
+# Cancelamento de Títulos
+Duepay
+## Endpoint
 
+### POST /publico/cancela_boleto
+Cancela o título informado
+#### Autorizaçao
+no header da requisição, informar o token de autenticação
 ```
-{
-    "resultado": "login expirado"
-}
+Authorization: onnNJXcE7C6JgSMbP7msy5gB7
 ```
 
-### POST /auth
-Autentica o usuário no sistema
 #### Parâmetros
-login: nome de usuário
-senha: chave do usuário
+numberId: número gerado na criação do título
+cliente: documento do pagador (cnpj ou cpf)
 ```
 {
-    "login": "nome de usuario",
-    "senha": "chave"
+    "numberId":"00003424464",
+    "cliente": "30340866000102"
 }
 ```
 #### Respostas
 ##### 200
-token de autenticação
+título descarregado
 ```
 {
-    "resultado": "usuário logado",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ94"
+    "message": "Mensagem de confirmação da baixa",
+    "success": true
 }
 ```
-##### 401
-erro de credenciais:
+##### 400
+erro no cancelamento junto à CIP
 ```
 {
-    "resultado": "usuário não encontrado"
+    "message": "razão do erro do cancelamento", 
+    "success": false
 }
 ```
-ou
+ou quando a situação atual do título impeça o cancelamento
 
 ```
 {
-    "resultado": "senha não confere"
+    "message": "Esse boleto já foi liquidado ou está em processo de liquidação e não pode ser removido."
+    "success": false
 }
 ```
